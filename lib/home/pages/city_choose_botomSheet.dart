@@ -6,7 +6,7 @@ void bottomSheet(BuildContext context) {
   showModalBottomSheet(
     context: context,
     builder: (BuildContext context) {
-      return Container(
+      return SizedBox(
         height: 1000,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -26,14 +26,14 @@ void bottomSheet(BuildContext context) {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
                 children: [
                   Expanded(
                       child: CupertinoTextField(
-                    prefix: Padding(
+                    prefix: const Padding(
                       padding: EdgeInsets.only(left: 5),
                       child: Icon(
                         Icons.search,
@@ -41,7 +41,7 @@ void bottomSheet(BuildContext context) {
                       ),
                     ),
                     placeholder: 'Поиск по городам',
-                    padding: EdgeInsets.symmetric(vertical: 17),
+                    padding: const EdgeInsets.symmetric(vertical: 17),
                     onTap: () {},
                   )),
                 ],
@@ -49,11 +49,11 @@ void bottomSheet(BuildContext context) {
               Expanded(
                   child: 
                   ListView.builder(
-                      itemCount: names().CityName.length,
+                      itemCount: Names().cityName.length,
                       
                       itemBuilder: (context, index) {
                         return ListTile(
-                          title: Text(names().CityName[index]),
+                          title: Text(Names().cityName[index]),
                           
                         );
                       })

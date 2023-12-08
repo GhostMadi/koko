@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/auth/pages/register_screen.dart';
 import 'package:flutter_application_3/home/pages/language_screen.dart';
 
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: MaterialApp (
         
-        home: LanguageChoose(),
+        home: RegisterScreen(),
       ),
     );
   }

@@ -1,5 +1,5 @@
-class names {
-  List<String> CityName = [
+class Names {
+  List<String> cityName = [
     'A',
     'Almaty','Astana'
   ];
