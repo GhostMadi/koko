@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/auth/widgets/radio.dart';
 import 'package:flutter_application_3/auth/widgets/text_field.dart';
+import 'package:flutter_application_3/routes/routing_const.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -22,7 +23,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: Column(
           children: [
             //icon close
-            Row(
+            const Row(
               children: [
                 Icon(
                   Icons.close,
@@ -31,11 +32,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 27,
             ),
             //register
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
@@ -45,37 +46,37 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ],
             ),
             //textFields
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Column(
               children: [
                 FieldCustome(btnName: ('8(777)77-77-77')),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 FieldCustome(btnName: ('имя')),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 FieldCustome(btnName: ('фамилия')),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 FieldCustome(btnName: ('почта')),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 33,
             ),
             //radioLists
             Row(
               children: [
-                Text('Пол'),
-                SizedBox(
+                const Text('Пол'),
+                const SizedBox(
                   width: 10,
                 ),
                 RadioCustome(
@@ -85,11 +86,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     digit = value!;
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
-                Text('Мужской'),
-                SizedBox(
+                const Text('Мужской'),
+                const SizedBox(
                   width: 10,
                 ),
                 RadioCustome(
@@ -99,33 +100,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     digit = value!;
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
-                Text('Женский'),
+                const Text('Женский'),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Column(children: [
               FieldCustome(btnName: 'Код друга (не обязательно)')
             ]),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
               children: [
                 Checkbox(
                     value: isChecked,
-                    
                     onChanged: (bool? value) {
                       setState(() {
                         isChecked = value!;
                       });
                     }),
                 RichText(
-                    text: TextSpan(children: [
+                    text: const TextSpan(children: [
                   TextSpan(
                       text: 'Я ознакомлен с',
                       style: TextStyle(color: Colors.black)),
@@ -139,21 +139,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 CupertinoButton(
-                  onPressed: isChecked==true?(){}:null,
-                  color:isChecked==true?Colors.green: Colors.grey,
-                  child: Text('Далее'),padding: EdgeInsets.symmetric(vertical: 20),),
-                  SizedBox(height: 10,),
-                  Center(
-                    child: RichText(
-                      text: TextSpan(children: [
+                  onPressed: isChecked == true
+                      ? () {
+                          Navigator.pushNamed(context, smsPage);
+                        }
+                      : null,
+                  color: isChecked == true ? Colors.green : Colors.grey,
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: const Text('Далее'),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Center(
+                  child: RichText(
+                      text: const TextSpan(children: [
                     TextSpan(
                         text: 'У меня уже есть аккаунт',
                         style: TextStyle(color: Colors.black)),
                     TextSpan(
-                        text: ' Войти',
-                        style: TextStyle(color: Colors.green)),
-                                  ])),
-                  )
+                        text: ' Войти', style: TextStyle(color: Colors.green)),
+                  ])),
+                )
               ],
             )
           ],

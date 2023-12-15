@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_application_3/home/widgets/city_nams.dart';
+import 'package:flutter_application_3/routes/routing_const.dart';
 
 void bottomSheet(BuildContext context) {
   showModalBottomSheet(
@@ -12,17 +14,26 @@ void bottomSheet(BuildContext context) {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Column(
             children: [
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.close),
-                  Text(
+                  IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      icon: const Icon(Icons.close)),
+                  const Text(
                     'Ваш город',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  Text(
-                    'Готово',
-                    style: TextStyle(color: Colors.green),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, Register);
+                    },
+                    child: const Text(
+                      'готово',
+                      style: TextStyle(color: Colors.green),
+                    ),
                   )
                 ],
               ),
@@ -47,17 +58,13 @@ void bottomSheet(BuildContext context) {
                 ],
               ),
               Expanded(
-                  child: 
-                  ListView.builder(
-                      itemCount: Names().cityName.length,
-                      
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title: Text(Names().cityName[index]),
-                          
-                        );
-                      })
-                ,
+                child: ListView.builder(
+                    itemCount: Names().cityName.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(Names().cityName[index]),
+                      );
+                    }),
               )
             ],
           ),

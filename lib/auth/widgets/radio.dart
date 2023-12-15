@@ -32,11 +32,7 @@ class _RadioCustomeState extends State<RadioCustome> {
       child: Container(
         height: 20,
         width: 20,
-        child: Icon(
-          Icons.check,
-          size: 13,
-          color: Colors.white,
-        ),
+        
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: widget.value == widget.groupValue
@@ -46,6 +42,11 @@ class _RadioCustomeState extends State<RadioCustome> {
                 color: widget.value == widget.groupValue
                     ? Colors.transparent
                     : Colors.grey)),
+        child:const  Icon(
+          Icons.check,
+          size: 13,
+          color: Colors.white,
+        ),
       ),
     );
   }
