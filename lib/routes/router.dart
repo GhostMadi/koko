@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter_application_3/auth/pages/register_screen.dart';

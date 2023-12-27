@@ -1,14 +1,15 @@
-
 import 'package:flutter/material.dart';
 
 class CustomeRadio extends StatefulWidget {
   int value;
   int groupValue;
+  String textValue;
   Color? color;
   Color? colorSelect;
   void Function(int?)? onChanged;
   CustomeRadio(
       {required this.value,
+      required this.textValue,
       required this.groupValue,
       this.color = Colors.white,
       this.colorSelect = Colors.grey,
@@ -32,18 +33,29 @@ class _CustomeRadioState extends State<CustomeRadio> {
           });
         }
       },
-      child: Container(
-        height: 20,
-        width: 20,
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: widget.value == widget.groupValue?Colors.green:Colors.transparent,
-            border: Border.all(
+      child: Row(
+        children: [
+          Container(
+            height: 20,
+            width: 20,
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
                 color: widget.value == widget.groupValue
                     ? Colors.green
-                    : Colors.grey)),
-        child:const  Icon(Icons.check,color: Colors.white,size: 15,),
-        
+                    : Colors.transparent,
+                border: Border.all(
+                    color: widget.value == widget.groupValue
+                        ? Colors.green
+                        : Colors.grey)),
+            child: const Icon(
+              Icons.check,
+              color: Colors.white,
+              size: 15,
+            ),
+          ),
+          const SizedBox(width: 10),
+          Text(widget.textValue),
+        ],
       ),
     );
   }

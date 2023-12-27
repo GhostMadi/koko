@@ -11,151 +11,83 @@ class LanguageChoose extends StatefulWidget {
 }
 
 class _LanguageChooseState extends State<LanguageChoose> {
+  int item = 1;
   @override
   Widget build(BuildContext context) {
-    int item = 1;
     return Scaffold(
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 25),
-          child: Column(
-            children: [
-              //picture
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image(
-                    image: AssetImage('images/BORD.jpg'),
-                    height: 94,
-                  )
-                ],
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Image(image: AssetImage('images/BORD.jpg'), height: 94),
+            const SizedBox(height: 70),
+            CustomeRadio(
+                textValue: 'Русский язык',
+                value: 1,
+                groupValue: item,
+                onChanged: (int? value) {
+                  setState(() {
+                    item = value!;
+                  });
+                }),
+            const SizedBox(height: 20),
+            CustomeRadio(
+              textValue: 'Қазақ тілі',
+              value: 2,
+              groupValue: item,
+              onChanged: (int? value) {
+                setState(() {
+                  item = value!;
+                });
+              },
+            ),
+            const SizedBox(height: 20),
+            CustomeRadio(
+              textValue: 'English',
+              value: 3,
+              groupValue: item,
+              onChanged: (int? value) {
+                setState(() {
+                  item = value!;
+                });
+              },
+            ),
+            const SizedBox(height: 177),
+            CupertinoButton(
+              padding: const EdgeInsets.symmetric(vertical: 19),
+              color: Colors.green,
+              onPressed: () {
+                bottomSheet(context);
+              },
+              child: const Text(
+                'Регистрация',
+                style: TextStyle(color: Colors.white),
               ),
-              const SizedBox(
-                height: 70,
+            ),
+            const SizedBox(height: 26),
+            CupertinoButton(
+              padding: const EdgeInsets.symmetric(vertical: 19),
+              color: Colors.green,
+              onPressed: () {},
+              child: const Text(
+                'Войти как гость',
+                style: TextStyle(color: Colors.white),
               ),
-              //radio
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 6),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        CustomeRadio(
-                          value: 1,
-                          groupValue: item,
-                          onChanged: (int? value) {
-                            setState(() {
-                              item = value!;
-                            });
-                          },
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        const Text(
-                          'Русский язык',
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: [
-                        CustomeRadio(
-                          value: 2,
-                          groupValue: item,
-                          onChanged: (int? value) {
-                            setState(() {
-                              item = value!;
-                            });
-                          },
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        const Text(
-                          'Қазақ тілі',
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: [
-                        CustomeRadio(
-                          value: 3,
-                          groupValue: item,
-                          onChanged: (int? value) {
-                            setState(() {
-                              item = value!;
-                            });
-                          },
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        const Text(
-                          'English',
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              //buttons
-              const SizedBox(
-                height: 177,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  CupertinoButton(
-                    padding: const EdgeInsets.symmetric(vertical: 19),
-                    color: Colors.green,
-                    onPressed: () {
-                      bottomSheet(context);
-                    },
-                    child: const Text(
-                      'Регистрация',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                  const SizedBox(height: 26),
-                  CupertinoButton(
-                    padding: const EdgeInsets.symmetric(vertical: 19),
-                    color: Colors.green,
-                    onPressed: () {
-                      
-                    },
-                    child: const Text(
-                      'Войти как гость',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  RichText(
-                      text: const TextSpan(children: [
-                    TextSpan(
-                        text: 'У меня уже есть аккаунт',
-                        style: TextStyle(color: Colors.black)),
-                    TextSpan(
-                        text: ' Войти', style: TextStyle(color: Colors.green)),
-                  ]))
-                ],
-              )
-            ],
-          ),
+            ),
+            const SizedBox(height: 10),
+            Center(
+              child: RichText(
+                  text: const TextSpan(children: [
+                TextSpan(
+                    text: 'У меня уже есть аккаунт',
+                    style: TextStyle(color: Colors.black)),
+                TextSpan(text: ' Войти', style: TextStyle(color: Colors.green)),
+              ])),
+            )
+          ],
         ),
       )),
     );

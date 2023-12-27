@@ -17,62 +17,37 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.close,
+              color: Colors.grey,
+              size: 25,
+            )),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        shape: Border.all(color: Colors.transparent),
+      ),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            //icon close
-            const Row(
-              children: [
-                Icon(
-                  Icons.close,
-                  color: Colors.grey,
-                  size: 25,
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 27,
-            ),
-            //register
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Регистрация',
-                  style: TextStyle(fontSize: 24),
-                )
-              ],
-            ),
-            //textFields
-            const SizedBox(
-              height: 30,
-            ),
-            Column(
-              children: [
-                FieldCustome(btnName: ('8(777)77-77-77')),
-                const SizedBox(
-                  height: 10,
-                ),
-                FieldCustome(btnName: ('имя')),
-                const SizedBox(
-                  height: 10,
-                ),
-                FieldCustome(btnName: ('фамилия')),
-                const SizedBox(
-                  height: 10,
-                ),
-                FieldCustome(btnName: ('почта')),
-                const SizedBox(
-                  height: 10,
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 33,
-            ),
-            //radioLists
+            const Text('Регистрация', style: TextStyle(fontSize: 24)),
+            const SizedBox(height: 30),
+            FieldCustome(btnName: ('8(705)7777777')),
+            const SizedBox(height: 10),
+            FieldCustome(btnName: ('Name')),
+            const SizedBox(height: 10),
+            FieldCustome(btnName: ('Second Name')),
+            const SizedBox(height: 10),
+            FieldCustome(btnName: ('Gmail')),
+            const SizedBox(height: 33),
             Row(
               children: [
                 const Text('Пол'),
@@ -80,41 +55,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   width: 10,
                 ),
                 RadioCustome(
+                  textValue: 'Мужской',
                   value: 1,
                   groupValue: digit,
                   onChanged: (int? value) {
-                    digit = value!;
+                    setState(() {
+                      digit = value!;
+                    });
                   },
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
-                const Text('Мужской'),
                 const SizedBox(
                   width: 10,
                 ),
                 RadioCustome(
+                  textValue: 'Женский',
                   value: 2,
                   groupValue: digit,
                   onChanged: (int? value) {
-                    digit = value!;
+                    setState(() {
+                      digit = value!;
+                    });
                   },
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
-                const Text('Женский'),
               ],
             ),
-            const SizedBox(
-              height: 15,
-            ),
-            Column(children: [
-              FieldCustome(btnName: 'Код друга (не обязательно)')
-            ]),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 15),
+            FieldCustome(btnName: 'Код друга (не обязательно)'),
+            const SizedBox(height: 20),
             Row(
               children: [
                 Checkbox(
@@ -135,33 +102,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ])),
               ],
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                CupertinoButton(
-                  onPressed: isChecked == true
-                      ? () {
-                          Navigator.pushNamed(context, smsPage);
-                        }
-                      : null,
-                  color: isChecked == true ? Colors.green : Colors.grey,
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: const Text('Далее'),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Center(
-                  child: RichText(
-                      text: const TextSpan(children: [
-                    TextSpan(
-                        text: 'У меня уже есть аккаунт',
-                        style: TextStyle(color: Colors.black)),
-                    TextSpan(
-                        text: ' Войти', style: TextStyle(color: Colors.green)),
-                  ])),
-                )
-              ],
+            CupertinoButton(
+              onPressed: isChecked == true
+                  ? () {
+                      Navigator.pushNamed(context, smsPage);
+                    }
+                  : null,
+              color: isChecked == true ? Colors.green : Colors.grey,
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: const Text('Далее'),
+            ),
+            const SizedBox(height: 10),
+            Center(
+              child: RichText(
+                  text: const TextSpan(children: [
+                TextSpan(
+                    text: 'У меня уже есть аккаунт',
+                    style: TextStyle(color: Colors.black)),
+                TextSpan(text: ' Войти', style: TextStyle(color: Colors.green)),
+              ])),
             )
           ],
         ),

@@ -1,15 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/auth/pages/register_screen.dart';
 
 import 'package:flutter_application_3/home/widgets/city_nams.dart';
 import 'package:flutter_application_3/routes/routing_const.dart';
 
 void bottomSheet(BuildContext context) {
   showModalBottomSheet(
+    
     context: context,
     builder: (BuildContext context) {
       return SizedBox(
-        height: 1000,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Column(
@@ -22,18 +23,17 @@ void bottomSheet(BuildContext context) {
                         Navigator.of(context).pop();
                       },
                       icon: const Icon(Icons.close)),
-                  const Text(
-                    'Ваш город',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
+                  const Text('Ваш город',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                   InkWell(
                     onTap: () {
-                      Navigator.pushNamed(context, Register);
+                      Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => const RegisterScreen()));
                     },
-                    child: const Text(
-                      'готово',
-                      style: TextStyle(color: Colors.green),
-                    ),
+                    child: const Text('готово',
+                        style: TextStyle(color: Colors.green)),
                   )
                 ],
               ),
